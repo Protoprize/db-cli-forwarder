@@ -15,11 +15,15 @@ public class Main {
         allArgs.add("java");
         allArgs.add("-jar");
         allArgs.add(System.getProperty("user.home") + "\\DreamBot\\BotData\\client.jar");
-
+        
 
         try {
             String source = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
-                    .toURI().getPath()).getAbsoluteFile().toString().replace("RuneLite.jar", "db_config.txt");
+                    .toURI().getPath()).getAbsoluteFile().toString();
+
+            String fileName = source.substring(source.lastIndexOf("\\") + 1);
+
+            source = source.replace(fileName, "db_config.txt");
             BufferedReader Buff = new BufferedReader(new FileReader(source));
             String data = Buff.readLine();
             if (!data.isEmpty()) {
