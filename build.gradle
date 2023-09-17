@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+group = 'org.p'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.ant:ant:1.10.14'
+
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.p.Main'
+        )
+    }
+}
+
+shadowJar {
+    archiveBaseName.set('db-cli-forwarder')
+    archiveClassifier.set('')
+}
